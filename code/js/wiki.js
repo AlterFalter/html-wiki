@@ -1,34 +1,63 @@
 function searchInWiki(searchFieldId, divToFilterId) {
+    //console.log("searchInWiki | searchFieldId: " + searchFieldId + " | divToFilterId: " + divToFilterId)
     let searchTerm = $("#" + searchFieldId).val()
     let searchTerms = splitSearchTerm(searchTerm)
+    //console.log(searchTerms)
     
     let childrenFromDivToFilter = $("#" + divToFilterId).children().toArray()
+    //console.log(childrenFromDivToFilter)
     let scores = []
 
     for (let i = 0; i < childrenFromDivToFilter.length; i++) {
         let text = getInnerTextWithoutMultiSpace(childrenFromDivToFilter[i])
+        //console.log("text to search from element: " + text)
         let score = searchTermsInStringAndGetScore(text, searchTerms)
         scores.push(score)
     }
+    console.log(scores)
+    // order elements by score
 
+    // TODO: create new child div
+    // TODO: add children in new order there
+    // TODO: remove the new div but not its content
     let sortedWikiId = "sortedWiki"
     $("#" + divToFilterId).append("<div id=\"" + sortedWikiId + "\"></div>")
     let childrenOrdered = mapOrder(childrenFromDivToFilter, scores)
+    console.log(childrenOrdered)
     for (let i = 0; i < childrenOrdered.length; i++) {
         $("#" + sortedWikiId).append($(childrenOrdered[i]))
     }
+    //console.log("unwrap wiki")
     $("#" + sortedWikiId).contents().unwrap()
 }
 function splitSearchTerm(searchTerm) {
     // split by space, comma, point, tab, enter
     // create array
+    // TODO: enter all combinations 
     // --> go throw split characters, every time split elments in array
     // --> do this for all orders the characters can have and combine all in one array
     // --> distinct array
     let result = splitMulti(searchTerm, [" ", ",", ".", "|", "\n", "\t", "-"]).filter(i => i !== "")
     result.push(searchTerm)
     result.push(searchTerm)
+    console.log("result: ")
+    console.log(result)
     return result
+    //return distinctArray(result)
+}
+function getAllTextInElementAndSubelementsAsArray(element) {
+    // get values from inputs, textareas, etc
+    // getcontent from all titles, p, divs, etc.
+    // get content from tables
+
+    // let content = []
+    // let e = $(element)
+    // content.push(e.text())
+    // let children = e.children()
+    // for (let i = 0; i < children.length; i++) {
+    //     let subcontent = getAllTextInElementAndSubelementsAsArray(children[i])
+    //     pushArray(content, subcontent)
+    // }
 }
 function getInnerTextWithoutMultiSpace(element) {
     return removeMultispace($(element).text())
@@ -95,9 +124,8 @@ function countOccurrences(string, subString, allowOverlapping) {
     }
     return n;
 }
-function splitMulti(str, tokens) {
-    // We can use the first token as a temporary join character
-    var tempChar = tokens[0]; 
+function splitMulti(str, tokens){
+    var tempChar = tokens[0]; // We can use the first token as a temporary join character
     for(var i = 1; i < tokens.length; i++){
         str = str.split(tokens[i]).join(tempChar);
     }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/wiki.js"></script>
+    <title>CNA Wiki</title>
+</head>
+<body>
+    <h1><a href="?">CNA</a></h1>
+    <h2>Search</h2>
+    <input type="text" id="searchTextBox" style="width:400px" onkeyup="searchInWiki('searchTextBox', 'wikiDiv')">
+    <!--<button onclick="searchInWiki('searchTextBox', 'wikiDiv')">Search</button>-->
+    <!--<button onclick="clearSearchBox()">Clear</button>-->
+
+    <h2>Wiki</h2>
+    <div id="wikiDiv">
+    </div>
+</body>
+</html>
