@@ -1,5 +1,3 @@
-
-        
 function printSuccess(testFunctionName, shouldBe, isValue) {
     let text = "isValue contains: " + isValue + " | type: " + typeof(isValue)
     printSuccessText(testFunctionName, text)

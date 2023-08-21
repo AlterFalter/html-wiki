@@ -16,7 +16,6 @@ Open the wiki.html file with a text editor (not word).
 
 ### Create multiple pages
 
-
 ## External wiki files (intermediate level)
 
 To have a better organized repository, you maybe want to split your wiki up in multiple files.
@@ -32,11 +31,9 @@ If you know what your doing, it should be easy for you to find out how this work
 A better way is using a webserver. No worries, it's less than you think it is. 
 Just install the programm [XAMPP](https://www.apachefriends.org/index.html)
 
-
 ## External js files (intermediate level)
 
 ## Testing js functions (pro level)
-
 
 ## Q&A
 
@@ -72,6 +69,12 @@ Normally yes. When we decide the code has good enough quality, we happily accept
 Don't forget that it should be easy to use, also as a complete novice.
 
 I can't code but still would like to contribute? OR I found a bug, what should I do? OR I would like a feature, what should I do?
+
+## Task list
+
+| Task | Description | Status |
+|-|-|-|
+||||
 
 ## License
 
